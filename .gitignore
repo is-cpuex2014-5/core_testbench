@@ -19,3 +19,7 @@ test_generator/nor
 test_generator/nand
 test_generator/or
 test_generator/xor
+test_generator/left_arith_shift
+test_generator/right_arith_shift
+test_generator/left_logic_shift
+test_generator/right_logic_shift
