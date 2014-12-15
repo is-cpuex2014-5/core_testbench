@@ -13,19 +13,11 @@ int main(void)
     uniform_int_distribution<int> dist (INT32_MIN,INT32_MAX);
     for (size_t i = 0; i < TEST_NUM; i++) {
 	int32_t a,c;
-	char aa[33],cc[33];
 	a = dist (mt);
 
 	c = ~a;
 
-	for (int t = 0; t < 32;++t) {
-	    aa[31 - t] = a & (1 << t) ? '1' : '0';
-	    cc[31 - t] = c & (1 << t) ? '1' : '0';
-	}
-	aa[32] = '\0';
-	cc[32] = '\0';
-
-	printf("%s\t%s\n", aa,cc);
+	printf("%08x\t%08x\n", a,c);	
     }
 
     return 0;

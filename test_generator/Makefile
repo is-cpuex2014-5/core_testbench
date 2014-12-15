@@ -1,5 +1,5 @@
 CXX = g++
-SRCS = eq.cpp lt.cpp add.cpp sub.cpp not.cpp and.cpp nand.cpp nor.cpp or.cpp xor.cpp
+SRCS = eq.cpp lt.cpp add.cpp sub.cpp not.cpp and.cpp nand.cpp nor.cpp or.cpp xor.cpp right_arith_shift.cpp left_arith_shift.cpp right_logic_shift.cpp left_logic_shift.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(OBJS:.o=.d)
 CXXFLAGS = -std=c++11 -O3 -g -I.. -I../src

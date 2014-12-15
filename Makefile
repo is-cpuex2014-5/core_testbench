@@ -1,4 +1,4 @@
-UNITS = eq lt add sub not and nand nor or xor 
+UNITS = eq lt add sub not and nand nor or xor shift
 SIMS = $(UNITS:%=%_sim)
 DATA = $(UNITS:%=%.dat)
 TESTBENCH = $(SIMS)
@@ -13,6 +13,13 @@ all: $(TESTBENCH)
 add_sim: alu.vhd
 sub_sim: alu.vhd
 not_sim: alu.vhd
+and_sim: alu.vhd
+nand_sim: alu.vhd
+nor_sim: alu.vhd
+or_sim: alu.vhd
+xor_sim: alu.vhd
+shift_sim: alu.vhd
+
 lt_sim: compr.vhd
 eq_sim: compr.vhd
 
