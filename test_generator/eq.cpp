@@ -2,17 +2,16 @@
 #include <random>
 #include <cstdint>
 
-
 using namespace std;
 
-const int TEST_NUM = 1000000;
+const size_t TEST_NUM = 10000000;
 
 int main(void)
 {
     random_device seed;
     mt19937 mt (seed());
     uniform_int_distribution<int> dist (INT32_MIN,INT32_MAX);
-    for (int i = 0; i < TEST_NUM; i++) {
+    for (size_t i = 0; i < TEST_NUM; i++) {
 	int32_t a,b;
 	char aa[33],bb[33];
 	bool c;
