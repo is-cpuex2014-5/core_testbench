@@ -1,4 +1,4 @@
-UNITS = eq lt add sub
+UNITS = eq lt add sub not
 SIMS = $(UNITS:%=%_sim)
 DATA = $(UNITS:%=%.dat)
 TESTBENCH = $(SIMS)
@@ -12,6 +12,7 @@ all: $(TESTBENCH)
 
 add_sim: alu.vhd
 sub_sim: alu.vhd
+not_sim: alu.vhd
 lt_sim: compr.vhd
 eq_sim: compr.vhd
 
