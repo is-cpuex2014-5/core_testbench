@@ -1,0 +1,2 @@
+vhdl work ../core/alu.vhd
+vhdl work xor_sim.vhd

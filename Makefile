@@ -1,4 +1,4 @@
-UNITS = eq lt add sub not
+UNITS = eq lt add sub not and nand nor or xor 
 SIMS = $(UNITS:%=%_sim)
 DATA = $(UNITS:%=%.dat)
 TESTBENCH = $(SIMS)

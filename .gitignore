@@ -14,3 +14,8 @@ test_generator/lt
 test_generator/add
 test_generator/sub
 test_generator/not
+test_generator/and
+test_generator/nor
+test_generator/nand
+test_generator/or
+test_generator/xor
