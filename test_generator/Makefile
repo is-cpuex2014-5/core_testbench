@@ -1,5 +1,5 @@
 CXX = g++
-SRCS = eq.cpp lt.cpp add.cpp
+SRCS = eq.cpp lt.cpp add.cpp sub.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(OBJS:.o=.d)
 CXXFLAGS = -std=c++11 -O3 -g -I.. -I../src

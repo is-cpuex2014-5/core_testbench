@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # please change this variable when test target is changed
-tests="eq_sim lt_sim add_sim"
+tests="eq_sim lt_sim add_sim sub_sim"
 ERROR_MES="User(VHDL) Code Called Simulation Stop"
 
 

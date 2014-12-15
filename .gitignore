@@ -12,3 +12,4 @@ isim
 test_generator/eq
 test_generator/lt
 test_generator/add
+test_generator/sub
