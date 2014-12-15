@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tests="eq"
+tests="eq lt"
 
 for a in $tests; do
     ./${a} > ../${a}.dat

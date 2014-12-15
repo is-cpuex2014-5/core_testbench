@@ -4,7 +4,7 @@ OBJS = $(SRCS:.cpp=.o)
 DEPS = $(OBJS:.o=.d)
 CXXFLAGS = -std=c++11 -O3 -g -I.. -I../src
 LDFLAGS =
-TESTS = eq
+TESTS = eq lt
 
 all: $(OBJS) $(DEPS) $(TESTS)
 	./gen.sh

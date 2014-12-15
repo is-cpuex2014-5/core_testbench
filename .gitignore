@@ -8,3 +8,6 @@ isim
 *.xmsgs
 *.cmd
 *_sim
+*.wcfg
+test_generator/eq
+test_generator/lt
