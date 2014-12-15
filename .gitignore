@@ -11,3 +11,4 @@ isim
 *.wcfg
 test_generator/eq
 test_generator/lt
+test_generator/add

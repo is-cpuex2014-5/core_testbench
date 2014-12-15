@@ -1,4 +1,4 @@
-UNITS = eq lt
+UNITS = eq lt add
 SIMS = $(UNITS:%=%_sim)
 DATA = $(UNITS:%=%.dat)
 TESTBENCH = $(SIMS)
@@ -10,6 +10,7 @@ vpath %_sim.vhd src
 all: $(TESTBENCH)
 
 
+add_sim: alu.vhd
 lt_sim: compr.vhd
 eq_sim: compr.vhd
 
