@@ -1,0 +1,10 @@
+*~
+*.o
+*.d
+*.log
+*.dat
+*.wdb
+isim
+*.xmsgs
+*.cmd
+*_sim

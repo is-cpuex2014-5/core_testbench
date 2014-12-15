@@ -1,0 +1,2 @@
+vhdl work ../core/compr.vhd
+vhdl work eq_sim.vhd
