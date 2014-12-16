@@ -34,10 +34,10 @@ architecture shift_sim of shift_sim is
   signal cc : buff := (others => (others => '0'));
   signal cccc : std_logic_vector (31 downto 0) := (others => '0');  
   signal tmpc : std_logic_vector (31 downto 0) := (others => '0');  
-  signal state : std_logic_vector (1 downto 0) := (others => '0');
+  signal state : std_logic_vector (2 downto 0) := (others => '0');
   signal s : std_logic := '0';
   constant clk_period : time := 10 ns;
-  constant opcode : std_logic_vector (6 downto 0) := "0000000";
+  constant opcode : std_logic_vector (6 downto 0) := "0010000";
   signal shift_dir : std_logic := '0';
   signal shift_type : std_logic_vector (1 downto 0) := (others => '0');
   signal shift_go : std_logic := '0';
@@ -46,6 +46,11 @@ begin  -- architecture shift_sim
 
   file_open(inf, "shift.dat",  read_mode);
   i_alu : alu port map (clk,opcode,a,b,c,shift_dir,shift_type,shift_go);
+
+  with state select
+    shift_go <=
+    '1' when "000",
+    '0' when others;
 
   main_loop: process 
     variable l : line;
@@ -64,43 +69,47 @@ begin  -- architecture shift_sim
       wait for clk_period/2;
       clk <= '1';
       case state is
-        when "00" =>
-          state <= "01";
-        when "01" =>
-          state <= "11";
-        when "11" =>
-          state <= "10";
-        when "10" =>
-          state <= "00";
+        when "000" =>
+          state <= "001";
+        when "001" =>
+          state <= "011";
+        when "011" =>
+          state <= "111";
+        when "111" =>
+          state <= "110";
+        when "110" =>
+          state <= "100";
         when others =>
-          state <= "00";
+          state <= "000";
       end case;
-      readline(inf, l);
-      hread(l, aa);
-      read(l, ss);           -- read in the space character
-      hread(l , bb);
-      read(l, ss);           -- read in the space character
-      hread(l , cc);
-      read(l, ss);           -- read in the space character
-      read(l , lr);
-      read(l, ss);           -- read in the space character
-      read(l , kind);
-      a <= aa;
-      b <= bb;
-      tmpc <= cc;
-      shift_dir <= lr;
-      shift_type <= kind;
-      shift_go <= '1';
-      if tmpc = c or s /= "11" then
-        Q <= '0';
-      else
-        Q <= '1';
-        assert false report "shift test not passed!!" severity failure;
-      end if;
-      if s (0) = '0' then        
-        s (0) := '1';
-      else
-        s (1) := '1';
+      if state = "000" then
+        readline(inf, l);
+        hread(l, aa);
+        read(l, ss);           -- read in the space character
+        hread(l , bb);
+        read(l, ss);           -- read in the space character
+        hread(l , cc);
+        read(l, ss);           -- read in the space character
+        read(l , lr);
+        read(l, ss);           -- read in the space character
+        read(l , kind);
+        a <= aa;
+        b <= bb;
+        tmpc <= cc;
+        shift_dir <= lr;
+        shift_type <= kind;
+      elsif state = "100" then
+        if tmpc = c or s /= "11" then
+          Q <= '0';
+        else
+          Q <= '1';
+          assert false report "shift test not passed!!" severity failure;
+        end if;
+        if s (0) = '0' then        
+          s (0) := '1';
+        else
+          s (1) := '1';
+        end if;
       end if;
     else
       wait;
